@@ -133,11 +133,10 @@ static void draw_middle(lv_obj_t *widget, lv_color_t cbuf[], const struct status
     // Fill background
     lv_canvas_draw_rect(canvas, 0, 0, CANVAS_SIZE, CANVAS_SIZE, &rect_black_dsc);
 
-
     // Drawing Mods Boxes
     char names[4][4] = {"CTL", "SFT", "ALT", "CMD"};
-    int mod_offsets[4][2] = {{2, 28}, {35, 28}, {2, 48}, {35, 48}};
-    lv_canvas_draw_rect(canvas, 0, 26, 68, 42, &rect_white_dsc);
+    int mod_offsets[4][2] = {{2, 2}, {35, 2}, {2, 22}, {35, 22}};
+    lv_canvas_draw_rect(canvas, 0, 0, 68, 42, &rect_white_dsc);
     for (int i = 0; i < 4; i++) {
         bool selected = (state->mod_state >> i) & 0x11;
         lv_canvas_draw_rect(canvas, mod_offsets[i][0], mod_offsets[i][1], 31, 18, &rect_black_dsc);
@@ -294,7 +293,7 @@ int zmk_widget_status_init(struct zmk_widget_status *widget, lv_obj_t *parent) {
     lv_obj_align(top, LV_ALIGN_TOP_RIGHT, 0, 0);
     lv_canvas_set_buffer(top, widget->cbuf, CANVAS_SIZE, CANVAS_SIZE, LV_IMG_CF_TRUE_COLOR);
     lv_obj_t *middle = lv_canvas_create(widget->obj);
-    lv_obj_align(middle, LV_ALIGN_TOP_LEFT, 24, 0);
+    lv_obj_align(middle, LV_ALIGN_TOP_LEFT, 0, 0);
     lv_canvas_set_buffer(middle, widget->cbuf2, CANVAS_SIZE, CANVAS_SIZE, LV_IMG_CF_TRUE_COLOR);
     lv_obj_t *bottom = lv_canvas_create(widget->obj);
     lv_obj_align(bottom, LV_ALIGN_TOP_LEFT, -44, 0);
